@@ -1,0 +1,42 @@
+.container {
+    max-width: 500px;
+    margin: 0 auto 70px;
+    background-color: hsl(40, 100%, 97%);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-black);
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: var(--button-bg-color);
+    border-color: var(--button-bg-color);
+}
+
+.cuadros-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Alineación horizontal */
+    margin-top: 20px;
+}
+
+.cuadro {
+    width: calc(20%); /* Para tener dos cuadros por fila con espacio entre ellos */
+    background-color: hsl(40, 100%, 97%);
+    padding: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-black);
+  
+}
+
+.cuadro p {
+    margin-bottom: 10px;
+}
