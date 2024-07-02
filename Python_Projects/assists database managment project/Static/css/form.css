@@ -1,0 +1,45 @@
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 70px;
+            margin-top: 70px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+        /* Estilo para el cuadro de asistencias */
+        .cuadro {
+            background-color: #fff;
+            padding: 50px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cuadro p {
+            margin-bottom: 10px;
+        }
+.cuadro {
+  max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra horizontalmente el cuadro */
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cuadro p {
+  margin-bottom: 10px;
+}

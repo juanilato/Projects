@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link de Boostrap y estilo de header y footer--> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    
+    <link rel="stylesheet" href="{{url_for('static', filename= 'css/mainIndex.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'css/footer.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'css/error.css')}}">
+    <title>Aplicacion Asistencias</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Colegio San Miguel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/iniciarSesion.html">Cerrar Sesion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class="principal"> <span>Asistencias Colegio San Miguel</span></h1>
+
+    <div class="container">
+        <section class="profile-section">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <h2 class="profile-name"><b>Padre</b></h2>
+            <h1 class="profile-name">Nombre: {{usuario.nombre}}</h1>
+            <p class="profile-email">Correo: {{usuario.correo}}</p>
+        </section>
+    </div>
+        <div class="container">
+    </div>   
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <img src="{{url_for('static', filename= 'img/asistenciaPadre.webp')}}" class="card-img-top" alt="Imagen de la card">
+              <div class="card-body">
+                <h5 class="card-title">Revisar Asistencia</h5>
+                <p class="card-text">Ingresando el DNI de su hijo se podra visualizar la cantidad de asistencias que posee.</p>
+                <a href="asistenciahijo.html" class="btn btn-primary">Ir</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div> 
+ 
+      </div>   
+    <footer>
+        <div class="footer-content">
+            <h3>Colegio</h3>
+            <p>Descripcion del colegio</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook"></i></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2023 Joaquin Ruiz y Juan Ignacio Latorre. designed by <span>Programadores</span></p>
+            </div>
+             {% if error %}
+             <div id="mensaje-error">
+                 {{ error }}
+                 <button id="cerrar-btn">Cerrar</button>
+             </div>
+            {% endif %}
+            
+            
+        </footer>
+    <script src="https://kit.fontawesome.com/7c935897fa.js" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='script/main.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    </body>
+</html>

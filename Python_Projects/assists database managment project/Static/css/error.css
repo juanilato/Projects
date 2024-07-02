@@ -1,0 +1,24 @@
+#mensaje-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    color: white;
+    padding: 10px;
+    z-index: 9999;
+    transition: opacity 1s ease;
+}
+
+#mensaje-error.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#cerrar-btn {
+    background-color: white;
+    color: red;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+}

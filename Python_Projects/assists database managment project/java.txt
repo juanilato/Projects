@@ -1,0 +1,33 @@
+Exceptions:
+	crear:
+		nombre clase extends Exception
+			public nombreClase (mensaje){
+				super(mensaje);
+		}
+
+
+	implementador:
+	
+		throws nombreException
+
+		throw new nombreException
+
+Interface:
+	crear:
+		public interface nombre
+			cada function
+	implementar:
+		public clase implements nombreInterface
+
+threads:
+	crear:
+		public class nombre extends threads
+		
+		@Override
+		run () // todo lo que se ejecuta en simultaneo
+		
+	main:
+		nombreClase objeto1 = new nombreclase ()
+		nombreClase objeto2 = new nombreclase ()
+		objeto1.start()
+		objeto2.start()
