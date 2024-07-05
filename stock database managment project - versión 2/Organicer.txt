@@ -1,0 +1,30 @@
+stock_management_app/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── product.py
+│   │   ├── supplier.py
+│   │   └── stock.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── product_service.py
+│   │   ├── supplier_service.py
+│   │   └── stock_service.py
+│   ├── views/
+│   │   ├── __init__.py
+│   │   ├── main_view.py
+│   │   ├── product_view.py
+│   │   ├── supplier_view.py
+│   │   └── stock_view.py
+│   ├── database.py
+│   ├── config.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_product.py
+│   ├── test_supplier.py
+│   └── test_stock.py
+├── requirements.txt
+├── README.md
+└── .gitignore
