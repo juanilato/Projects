@@ -1,0 +1,27 @@
+/* notifications.css */
+
+/* Contenedor de notificaciones */
+#notification-container {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    z-index: 1001;
+}
+
+/* Estilos de las notificaciones */
+.notification {
+    background-color: #d7649e;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}

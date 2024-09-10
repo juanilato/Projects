@@ -1,0 +1,27 @@
+/* header.css */
+
+/* Header Styles */
+header {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #494849; 
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100px;
+    z-index: 2; /* Higher than the side menu */
+}
+
+header img {
+    cursor: pointer; 
+}
+
+/* Mobile adjustments for the header */
+@media (max-width: 768px) {
+    header img {
+        width: 250px; 
+        height: auto; 
+    }
+}

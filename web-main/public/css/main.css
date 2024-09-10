@@ -1,0 +1,16 @@
+/* main.css */
+
+/* Main Content Styles */
+main {
+    padding-top: 100px; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+html, body {
+    touch-action: manipulation; 
+}

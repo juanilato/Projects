@@ -1,0 +1,50 @@
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Initially hidden */
+    background-color: #d979a9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0; /* Start as invisible */
+    visibility: hidden; /* Start as hidden */
+}
+
+#scrollToTopBtn:hover {
+    background-color: #d2629a;
+}
+
+#scrollToTopBtn.scrolling-up {
+    transform: translateY(-100px); /* Move up by 100px or however much you want */
+    opacity: 0; /* Fade out */
+    visibility: hidden;
+}
+
+#scrollToTopBtn.visible {
+    display: block; /* Ensure it's in the layout */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilos adaptables para dispositivos móviles */
+@media screen and (max-width: 600px) {
+    #scrollToTopBtn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 15px;
+        line-height: 50px;
+    }
+}

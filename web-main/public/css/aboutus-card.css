@@ -1,0 +1,82 @@
+/* aboutus-card.css */
+
+#aboutusCard {
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; 
+    padding: 20px;
+    background-color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 3000; 
+    overflow: auto; 
+    transition: opacity 0.3s ease, visibility 0.3s ease; 
+    opacity: 0; 
+    visibility: hidden; 
+    border: 1px solid #d7649e; 
+}
+
+#aboutusCard.show {
+   
+    opacity: 1;
+    visibility: visible;
+}
+
+#aboutusCard.hidden {
+    
+    opacity: 0;
+    visibility: hidden;
+}
+
+#aboutusCard img {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 10px; 
+    object-fit: cover;
+    margin-bottom: 15px; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+#aboutusCard p {
+    font-size: 16px; 
+    color: #333; 
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #aboutusCard {
+        width: 90%; /* Ajusta el ancho del modal en pantallas móviles */
+        height: 70%; /* Ajusta el alto del modal en pantallas móviles */
+        top: 10%; /* Ajusta la posición vertical para centrarlo mejor */
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px; /* Mantén bordes redondeados */
+        padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+    }
+    
+    #aboutusCard img {
+        width: 200px; /* Ajusta el tamaño de la imagen */
+        height: 200px; /* Ajusta el tamaño de la imagen */
+    }
+    
+    #aboutusCard button {
+        font-size: 30px; /* Aumenta el tamaño del botón de cerrar */
+        top: 15px; /* Ajusta la posición del botón de cerrar */
+        right: 15px;
+    }
+}
+#aboutusCard button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333; 
+    cursor: pointer;
+}

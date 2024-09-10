@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+
+    <title>Puro Amor 🩷</title>
+    
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+
+    
+    <!-- Fonts and Icons -->
+    <link rel="icon" type="image/PNG" href="images/logoarriba.PNG"> 
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/side-menu.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/color-options.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/cart-modal.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/scroll-to-top-btn.css">
+    <link rel="stylesheet" href="css/aboutus-card.css">
+    <link rel="stylesheet" href="css/contact-card.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+    <!-- Menu Toggle Button -->
+    <div id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+        <!-- Logo -->
+        <img src="/images/logo2.PNG" id="logo2" alt="Logo">
+    </header>
+
+    <!-- Side Menu Navigation -->
+    <nav id="sideMenu" class="hidden">
+        <!-- Close Menu Button -->
+
+        <!-- Navigation Links -->
+        <a href="#" id="contactButton" class="menuItem">Contacto</a>
+        <a href="#" id="aboutUsButton" class="menuItem">Sobre Nosotros</a>
+        <button id="cartButton" class="menuItem">Carrito <span id="cartCount">0</span></button>
+
+        <!-- Products Dropdown -->
+        <button id="productsToggle" class="menuItem">Productos</button>
+        <div id="categories" class="hidden">
+            <!-- Product Categories -->
+            <a href="#" data-filter="hebilla" class="menuItem">Hebilla</a>
+            <a href="#" data-filter="bebé" class="menuItem">Bebé</a>
+            <a href="#" data-filter="vincha" class="menuItem">Vincha</a>
+            <a href="#" data-filter="gomita" class="menuItem">Gomita</a>
+            <a href="#" data-filter="scrunchies" class="menuItem">Scrunchies</a>
+            <a href="#" data-filter="broche" class="menuItem">Broche</a>
+            <a href="#" data-filter="all" class="menuItem">Todos</a>
+        </div>
+    </nav>
+
+<!-- Main Content -->
+<main>
+    <% 
+    // Helper function to format image URL
+    function formatImageUrl(productName, productColors) {
+        // Replace spaces with underscores and lowercase the names
+        var formattedName = productName.trim().replace(/\s+/g, '_').toLowerCase();
+        var formattedColor = productColors[0].trim().replace(/\s+/g, '_').toLowerCase();
+        
+        // Return the complete image filename
+        return formattedName + '_' + formattedColor + '.JPG';
+    }
+    %>
+
+    <% products.forEach(product => { %>
+        <% 
+        // Split the product name into parts
+        const parts = product.name.split(' ');
+
+        // Join the first two parts with a space
+        const displayName = parts.slice(0, 2).join(' ');
+        %>
+        
+        <section class="product" data-product-name="<%= product.name.toLowerCase() %>">
+            <!-- Product Image -->
+            <img src="/images/<%= formatImageUrl(product.name, product.colors) %>" alt="<%= product.name %>" class="product-image" loading="lazy">
+            
+            <!-- Product Name and Price -->
+            <h2><%= displayName %></h2>
+            <p>Precio: $<%= Math.round(product.price) %></p>
+
+            <!-- Color Options -->
+            <div class="color-options">
+                <% product.colors.forEach(color => { %>
+                    <div class="color-circle <%= color %>" data-color="<%= color %>"></div>
+                <% }); %>
+            </div>
+
+            <!-- Add to Cart Button -->
+            <button class="add-to-cart" data-product-id="<%= product.id %>">Añadir al carro</button>
+        </section>
+    <% }); %>
+</main>
+
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" id="imageModalClose">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Volver al inicio">↑</button>
+
+    <!-- Contact Card -->
+    <div id="contactCard">
+        <button id="closeContactCard">&times;</button>
+        <ul>
+            <li><a href="https://wa.me/5492645250735" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+                WhatsApp
+            </a></li>
+            <li><a href="https://www.instagram.com/puroamor_hechoamano/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- About Us Card -->
+    <div id="aboutusCard">
+        <button id="closeAboutusCard">&times;</button>
+        <div class="card-content">
+            <img src="/images/soledad.JPG" alt="persona"> 
+            <p>Somos una empresa sanjuanina, que hace a mano accesorios para el pelo.</p>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+
+    <!-- Scripts JavaScript -->
+    <script src="/js/script.js" type="module"></script>
+    
+</body>
+</html>
