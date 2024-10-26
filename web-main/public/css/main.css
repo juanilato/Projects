@@ -11,6 +11,7 @@ main {
 }
 
 
-html, body {
-    touch-action: manipulation; 
+html, body{
+    touch-action:manipulation;
+   
 }

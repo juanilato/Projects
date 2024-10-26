@@ -1,12 +1,13 @@
 /* global.css */
 
-/* Global Styles */
+/* Global reset for margin, padding, and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Main body styling with custom font, background image, and centering elements */
 body {
     font-family: 'Gochi Hand', Arial, sans-serif;
     background-color: #f4f4f4;
@@ -14,15 +15,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('/images/hero.jpg');
-    background-size: cover;
+    background-image: url('/images/hero.JPG');
+    background-size: cover; /* Cover the full screen, but might crop */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-attachment: fixed;
     overflow: auto;
+    min-height: 100vh; /* Ensure the body covers the full screen height */
 }
 
-img {
-    width: 30%; 
-    height: auto; 
+/* Media query for smartphones */
+@media screen and (max-width: 600px) {
+    body {
+        background-size: contain; /* Ensure the full image is visible */
+        background-position: top center; /* Position image at the top */
+        background-attachment: scroll; /* Disable fixed background for better performance */
+        min-height: 100vh; /* Ensure it covers full screen height */
+    }
 }
+

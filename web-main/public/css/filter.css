@@ -1,0 +1,87 @@
+/* Main filter button style */
+.filter-circle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: block;
+    background-color: #d979a9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+/* Filter options (hidden by default) */
+.filter-options {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    flex-direction: column;
+    display:flex;
+    gap: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); 
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+    z-index: 1001;
+}
+
+/* Make the filters appear smoothly from bottom to top */
+.filter-options.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); 
+}
+
+/* Individual filter buttons */
+.filter-options button {
+    background-color: #d979a9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for filter buttons */
+.filter-options button:hover {
+    background-color: #d2629a;
+}
+
+/* Adaptable style for mobile devices */
+@media screen and (max-width: 600px) {
+    .filter-circle {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 15px;
+        line-height: 50px;
+    }
+    /* Filter options (hidden by default) */
+    .filter-options {
+        bottom: 80px; 
+        right: 15px;
+    }
+
+}
+
+
+
+

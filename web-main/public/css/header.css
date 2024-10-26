@@ -1,5 +1,3 @@
-/* header.css */
-
 /* Header Styles */
 header {
     width: 100%;
@@ -7,21 +5,110 @@ header {
     background-color: #494849; 
     color: #fff;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
     position: fixed;
-    height: 100px;
-    z-index: 2; /* Higher than the side menu */
+    height: auto; /* Change to auto to accommodate additional elements */
+    z-index: 2; 
 }
 
+/* Sub-header for Logo and Cart Button */
+.header-main {
+    display: flex;
+    justify-content: space-between; /* Ensures space between logo and cart */
+    align-items: center;
+    width: 100%; /* Ensure it spans the full width */
+    margin-bottom: 10px; /* Space below the header-main */
+}
+
+/* Header image with pointer for function */
 header img {
     cursor: pointer; 
+    margin-left: 60px;
+    top: 10px;
+    position: relative;
+}
+
+/* Cart Button Styles */
+#cartButton {
+    position: relative;
+    background-color: #d979a9; 
+    border: none;
+    border-radius: 25px; 
+    padding: 10px 15px; /* Adjust padding for smaller size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    gap: 5px; /* Reduced gap */
+    top: 10px;
+}
+
+/* Cart Icon Styles */
+.cart-icon {
+    font-size: 24px; /* Reduced icon size */
+    color: #e0ddd7; 
+    left: 4px;
+    position: relative; 
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for Cart Button and Icon */
+#cartButton:hover {
+    background-color: #d83d8a; 
+    transform: scale(1.08); 
+}
+/* Cart Count Styles */
+#cartCount {
+    margin-left: 5px; /* Space between cart text and count */
+    color: #e0ddd7; /* Match color with the icon text color */
+    font-size: 14px; /* Adjust font size as needed */
+    display: inline-block; /* Ensures it stays on the same line */
+    vertical-align: middle; /* Aligns with the icon and text */
+}
+
+/* Categories Container Styles */
+.categories-container {
+    display: flex; /* Aligns items horizontally */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    overflow-y: hidden; /* Hides vertical scrollbar if it appears */
+    padding: 10px 0; /* Add some padding */
+    white-space: nowrap; /* Prevents wrapping of items */
+    width: 100%; /* Ensure it spans the full width */
+}
+
+/* Individual Category Items */
+.categories-container a {
+    margin: 0 15px; /* Space between category links */
+    padding: 10px 15px; /* Add padding for clickable area */
+    background: none; /* No background for buttons */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover Effect for Categories */
+.categories-container a:hover {
+    color: #d83d8a; /* Change color on hover */
+}
+
+/* Position categories lower in the header */
+.categories-container {
+    margin-top: 10px; /* Adjust margin to move categories lower */
 }
 
 /* Mobile adjustments for the header */
 @media (max-width: 768px) {
     header img {
-        width: 250px; 
+        width: 200px; 
         height: auto; 
+    }
+    .cart-icon {
+        font-size: 12px; 
+        
     }
 }

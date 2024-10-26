@@ -1,47 +1,5 @@
 // menu.js
 
-
-
-// swipea las categorias al tocar boton "productos"
-
-export function categoriesSwipe(){
-    const productsToggle = document.getElementById("productsToggle");
-    productsToggle.addEventListener('click', function() {
-
-    const categories = document.getElementById("categories");
-    if (categories.classList.contains('show')) {
-        categoriesClose();
-    } else {
-        categoriesOpen();
-        
-    }
-
-});
-}
-
-
-//se encarga de abrir y mostrar las categorias, comprobando que no esten mostradas previamente
-export function categoriesOpen(){
-    const categories = document.getElementById("categories");
-    if (!categories.classList.contains('show')) {
-        categories.classList.remove('hidden');
-        categories.classList.add('show');
-        
-
-    }
-}
-
-//se encarga de cerrar y ocultar las categorias, comprobando que esten mostradas previamente
-export function categoriesClose(){
-    const categories = document.getElementById("categories");
-    if (categories.classList.contains('show')){
-    
-    categories.classList.remove('show');
-    categories.classList.add('hidden');
-    }
-}
-
-
 //se encarga de cerrar el menú y colocar el botón en su respectiva posición de = cuando sea necesario (comprueba que el menu lateral se muestre previamente)
 export function closeMenu() {
     const menuToggle = document.getElementById("menuToggle");
@@ -52,7 +10,7 @@ export function closeMenu() {
         sideMenu.classList.remove("show");
         sideMenu.classList.add("hidden");
         sideMenu.scrollTop = 0;
-        categoriesClose();
+        
     }
 }
 //se encarga de abrir el menú y colocar el botón en su respectiva posición de X cuando sea necesario (comprueba que el menu lateral no este mostrado previamente)
@@ -73,7 +31,7 @@ export function openMenu() {
 export function handleMenuToggle() {
     const menuToggle = document.getElementById("menuToggle");
     const sideMenu = document.getElementById("sideMenu");
-    const categories = document.getElementById("categories");
+    
 
     menuToggle.addEventListener("click", () => {
         
@@ -89,8 +47,8 @@ export function handleMenuToggle() {
 
 // filtra productos según las categorías dadas, busca si se encuentra el nombre dentro del mismo producto
 //finalmente cierra las categorias de los productos y cierra el menú lateral al filtrar
-export function filter() {
-    const filterLinks = document.querySelectorAll("#categories a");
+export function filterCategories() {
+    const filterLinks = document.querySelectorAll(".categories-container a");
 
     filterLinks.forEach(link => {
         link.addEventListener("click", (event) => {
@@ -117,9 +75,13 @@ export function filter() {
                 });
             }
 
-            // Cierra el menú lateral después de filtrar y las categorías
-            categoriesClose();
+
+            // Cierra el menú lateral después de filtrar 
             closeMenu();
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            
         });
     });
 
@@ -214,4 +176,47 @@ export function aboutUsButton() {
 
 
 
+export function filterCriteria(){
+    // Toggle filter options visibility with transition
+    document.getElementById('mainFilterButton').addEventListener('click', function() {
+        const filterOptions = document.getElementById('filterOptions');
+        filterOptions.classList.toggle('show');  // Apply the 'show' class
+    });
+
+    // Sorting buttons
+    document.getElementById('priceAscButton').addEventListener('click', () => sortProducts('priceAsc'));
+    document.getElementById('priceDescButton').addEventListener('click', () => sortProducts('priceDesc'));
+    document.getElementById('nameAscButton').addEventListener('click', () => sortProducts('nameAsc'));
+    document.getElementById('nameDescButton').addEventListener('click', () => sortProducts('nameDesc'));
+}
+
+// Function to sort products
+function sortProducts(criteria) {
+    let productsArray = [...document.querySelectorAll('.product')];
+
+    if (criteria === 'priceAsc') {
+        productsArray.sort((a, b) => parseFloat(a.querySelector('p').textContent.replace('Precio: $', '')) - parseFloat(b.querySelector('p').textContent.replace('Precio: $', '')));
+    } else if (criteria === 'priceDesc') {
+        productsArray.sort((a, b) => parseFloat(b.querySelector('p').textContent.replace('Precio: $', '')) - parseFloat(a.querySelector('p').textContent.replace('Precio: $', '')));
+    } else if (criteria === 'nameAsc') {
+        productsArray.sort((a, b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
+    } else if (criteria === 'nameDesc') {
+        productsArray.sort((a, b) => b.querySelector('h2').textContent.localeCompare(a.querySelector('h2').textContent));
+    }
+
+    closeMenu();
+
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const filterOptions = document.getElementById('filterOptions');
+    filterOptions.classList.toggle('show');  
+
+
+
+    // Reorder the product list in the DOM
+    const container = document.querySelector('main');
+    container.innerHTML = ''; // Clear the current product display
+    productsArray.forEach(product => container.appendChild(product));
+}
 

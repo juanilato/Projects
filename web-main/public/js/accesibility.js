@@ -1,5 +1,6 @@
 import { closeMenu, openMenu, closeContact, closeAboutUs} from './menu.js';
-import {closeCartModal as closeCart} from './cart.js';
+import {closeCartModal as closeCart, cartModal} from './cart.js';
+
 
 
 
@@ -7,8 +8,8 @@ import {closeCartModal as closeCart} from './cart.js';
 
 let startX = 0;
 let startY = 0;
-const threshold = 125; 
-let cartModal = null;
+const threshold = 140; 
+
 
 // funcion que verifica si el elemento posee scroll horizontal
 function hasHorizontalScroll(element) {
@@ -52,19 +53,21 @@ document.addEventListener('touchend', function (e) {
         const contactCard = document.getElementById("contactCard");
         const aboutusCard = document.getElementById("aboutusCard");
         const sideMenu = document.getElementById("sideMenu");
-
+        // Busca entre los casos para ejecutar una opción (verifica que el elemento sea existente, y que este mostrado, no el caso del side menu)
         switch (true) {
+            // Cierra contact card
             case contactCard && contactCard.classList.contains('show'):
                 closeContact();
                 break;
-
+            // Cierra about us card
             case aboutusCard && aboutusCard.classList.contains('show'):
                 closeAboutUs();
                 break;
-
+            // Cierra cart modal
             case cartModal && cartModal.classList.contains('show'):
                 closeCart();
-
+                break;
+            //Cierra side menu
             case sideMenu && sideMenu.classList.contains('hidden'):
                 openMenu();
                 
@@ -76,39 +79,49 @@ document.addEventListener('touchend', function (e) {
         }
     }
 
-    // si es un swipe left, se debe cerrar el menú
+    // si es un swipe left, se debe cerrar el menú o abrir el modal del carrito
     if (diffX < -threshold) { 
         
-        closeMenu();
+        const sideMenu = document.getElementById("sideMenu");
+        if (sideMenu && sideMenu.classList.contains('show')) {
+            closeMenu();
+        }
     }
 });
-
 }
 
 
-
-export function noZoomMobile(){
-
-    //prevents zoom on movile phone 
+export function noZoomMobile() {
+    // Prevent pinch-to-zoom gestures
     document.addEventListener('gesturestart', function (e) {
         e.preventDefault();
     });
-    
     document.addEventListener('gesturechange', function (e) {
         e.preventDefault();
     });
-    
     document.addEventListener('gestureend', function (e) {
         e.preventDefault();
     });
 
-
-    document.addEventListener('touchmove', function(event) {
+    // Prevent zooming on touchmove events but allow scrolling
+    document.addEventListener('touchmove', function (event) {
         if (event.scale !== 1) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent zooming
         }
     }, { passive: false });
+
+    // Prevent double-tap to zoom (this might block some scroll events if set too restrictively)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = new Date().getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
 }
+
+
 
 
 
@@ -124,8 +137,9 @@ export function noZoomMobile(){
 
 
 
+
+// Al bajar lo suficiente aparece un botón para volver al principio, este scrollea hacia arriba de manera smooth y cierra el menú
 export function sideUpButton() {
-    // Mostrar botón para subir cuando se desplaza hacia abajo
     window.onscroll = function() {
         let scrollToTopBtn = document.getElementById('scrollToTopBtn');
         if (scrollToTopBtn) {
@@ -136,32 +150,29 @@ export function sideUpButton() {
             }
         }
     };
+    
 
-    // Desplazarse hacia arriba cuando se hace clic en el botón
     document.getElementById('scrollToTopBtn').onclick = function() {
         const scrollToTopBtn = this;
 
-        // Aplicar la transición de desplazamiento y desvanecimiento
-        scrollToTopBtn.classList.add('scrolling-up');
         
-        // Si tienes una función closeMenu definida, úsala
-        if (typeof closeMenu === 'function') {
-            closeMenu();
-        }
+        scrollToTopBtn.classList.add('scrolling-up');
 
-        // Desplazarse suavemente hacia arriba
+        closeMenu();
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Quitar la clase scrolling-up después de que termine la transición
+        
         setTimeout(() => {
             scrollToTopBtn.classList.remove('scrolling-up');
-        }, 1000); // Coincide con la duración de la transición en CSS
+        }, 1000); 
     };
 }
 
 
 
-export function notification(message, duration = 3000){
+
+export function notification(message, duration = 2000){
     
         const notification = document.createElement('div');
         notification.className = 'notification';

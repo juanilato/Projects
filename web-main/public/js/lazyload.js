@@ -1,4 +1,5 @@
-// lazyLoad.js   // Helps load images fast //
+// lazyLoad.js   
+// Helps load images fast //
 export function initializeLazyLoading() {
     const lazyImages = document.querySelectorAll("img.lazy");
 

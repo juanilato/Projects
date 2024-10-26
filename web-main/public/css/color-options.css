@@ -1,16 +1,14 @@
-/* color-options.css */
-/* Color Options Styles */
-/* color-options.css */
+
 /* Color Options Styles */
 .color-options {
     display: flex;
-    flex-wrap: nowrap; /* Prevents wrapping to the next line */
+    flex-wrap: nowrap; 
     gap: 5%;
-    overflow-x: auto; /* Allows horizontal scrolling */
-    max-width: 100%; /* Ensures no overflow outside the container */
-    padding: 5px 0; /* Adds space around for better visibility */
-    -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
-    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    overflow-x: auto;
+    max-width: 100%; 
+    padding: 5px 0; 
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none;
     
 }
 
@@ -18,70 +16,59 @@
 .color-options::-webkit-scrollbar {
     display: none;
 }
-
+/* Color circle styles */
 .color-circle {
-    width: 24px; /* Slightly larger for a modern look */
+    width: 24px; 
     height: 24px;
     border-radius: 50%;
     margin-bottom: 10px;
     cursor: pointer;
-    border: 2px solid hsl(0, 0%, 75%); /* Lighter, softer border */
-    background: hsl(0, 0%, 90%); /* Subtle background color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for a subtle 3D effect */
-    flex-shrink: 0; /* Prevents shrinking */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    border: 2px solid hsl(0, 0%, 75%); 
+    background: hsl(0, 0%, 90%); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    flex-shrink: 0; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
 }
 
+/* Color circle selected styles */
 .color-circle.selected {
     position: relative;
-    border: 2px solid #eab3d7; /* Light border on the color circle */
-    background: #fff; /* White background for the selected state */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced soft shadow for a lifted effect */
-    transform: scale(1.1); /* Slightly scales up the circle for emphasis */
-    transition: all 0.3s ease; /* Smooth transition for all properties */
+    border: 2px solid #eab3d7; 
+    background: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.1); 
+    transition: all 0.3s ease; 
 }
 
 
 
-/* Color Circle Styles */
+/* Color Circle Styles (different colors) */
+
 .color-circle.Negro { background-color: black; }
-.color-circle.Rosa-Viejo { background-color: #c08081; }
-.color-circle.Nude { background-color: #f5c6c6; }
-.color-circle.Estampados.surtidos {
-    background: linear-gradient(135deg, #ff6b6b, #f9cb28, #4a90e2, #50e3c2, #e94e77);
-}
-.color-circle.Estampados.Varios {
-    background: linear-gradient(135deg, #b0a2a2, #d0b5a1, #8ca4c9, #a9d8c4, #d9a4b3);
-}
+.color-circle.Estampados.surtidos {background: linear-gradient(135deg, #ff6b6b, #f9cb28, #4a90e2, #50e3c2, #e94e77); }
+.color-circle.Estampados.Varios {background: linear-gradient(135deg, #b0a2a2, #d0b5a1, #8ca4c9, #a9d8c4, #d9a4b3); }
 .color-circle.Azul.Petroleo { background-color: #004d99; }
-.color-circle.Crema { background-color: #f5f5dc; }
-.color-circle.Salmon { background-color: #fa8072; }
-.color-circle.Marron { background-color: #6f4f28; }
-.color-circle.Fucsia { background-color: #d63384; }
-.color-circle.Rosa { background-color: #ff66b2; }
-.color-circle.Blanco { background-color: #fff; }
-.color-circle.Verde { background-color: #008000; }
-.color-circle.Azul.Francia { background-color: #0033cc; }
-.color-circle.Amarillo { background-color: yellow; }
-.color-circle.Verde.Agua { background-color: #00ced1; }
-.color-circle.Rojo { background-color: red; }
-.color-circle.Bordo { background-color: #800000; }
-.color-circle.Celeste { background-color: #b0e0e6; }
-.color-circle.Azul.Marino { background-color: #003366; }
 .color-circle.Natural { background-color: #f5f5dc; }
+.color-circle.Salmon { background-color: #fab993; }
+.color-circle.Marron { background-color: #704e25; }
+.color-circle.Fucsia { background-color: #d63384; }
+.color-circle.Rosa { background-color: #e67db2; }
+.color-circle.Blanco { background-color: #fff; }
+.color-circle.Verde { background-color: #006d00; }
+.color-circle.Azul.Francia { background-color: #0033cc; }
+.color-circle.Amarillo { background-color: rgb(240, 240, 104); }
+.color-circle.Verde.Agua { background-color: #a0ca9e; }
+.color-circle.Rojo { background-color: red; }
+.color-circle.Bordo { background-color: #720101; }
+.color-circle.Celeste { background-color: #b0e0e6; }
+.color-circle.Azul.Marino { background-color: #022b54; }
 .color-circle.Violeta { background-color: #C7A4D5; }
+.color-circle.Naranja{ background-color: rgb(210, 97, 5);}
 .color-circle.Turquesa { background-color: #40e0d0; }
-.color-circle.Lila { background-color: #c8a2c8; }
-.color-circle.Verde.Manzana { background-color: #a1c4a3; }
-.color-circle.Verde.Esmeralda { background-color: #50c878; }
-.color-circle.Verde.Musgo { background-color: #4a5d23; }
-
-.color-circle.Lisas, .color-circle.Estampadas, .color-circle.Combinada {
-    border: 2px solid #fff; 
-}
-
+.color-circle.Lila { background-color: #bd71bd; }
+.color-circle.Verde.Militar { background-color: #2d3915; }
+.color-circle.Lisas, .color-circle.Estampadas, .color-circle.Combinada { border: 2px solid #fff; }
 .color-circle.Lisas { background: linear-gradient(135deg, #d0d0d0 50%, #b0b0b0 50%); }
 .color-circle.Estampadas { background: linear-gradient(135deg, #b3cde0, #f4a582); }
-.color-circle.Combinada {
-    background: linear-gradient(135deg, #d0d0d0 25%, #b0b0b0 25% 50%, #b3cde0 50%, #f4a582 50% 100%);
-}
+.color-circle.Gris{ background-color:rgb(74, 73, 73);}
+.color-circle.Combinada { background: linear-gradient(135deg, #d0d0d0 25%, #b0b0b0 25% 50%, #b3cde0 50%, #f4a582 50% 100%); }

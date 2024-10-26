@@ -3,11 +3,13 @@
 /* Product Styles */
 .product {
     background-color: #eab3d7;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 275px;
     text-align: center;
+    top: 60px;
+    position: relative;
 }
 
 .product img {
@@ -21,11 +23,12 @@
     color: #cc0a6b;
 }
 
+/*Mobile adaptation*/
 @media (max-width: 600px) {
     .product img {
         max-width: 100%;
         height: auto;
-        width: 100%;
+        width: 90%;
         border-radius: 10px;
     }
 }
@@ -45,4 +48,46 @@
 .add-to-cart:hover {
     color: hsl(0, 0%, 50%);
     transition: 0.3s ease; 
+}
+
+@keyframes drop {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(30px) scale(0.8); opacity: 0; }
+}
+
+.drop-effect {
+    animation: drop 0.2s ease forwards;
+}
+
+
+#heart-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    pointer-events: none;
+    z-index: 1000; 
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(1.2);
+    }
+}
+
+.heart-icon {
+    font-size: 24px;  
+    color: #ff69b4; 
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    animation: floatHeart 2s ease forwards;
 }

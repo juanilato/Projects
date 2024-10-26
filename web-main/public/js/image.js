@@ -1,4 +1,4 @@
-// modal.js 
+//image.js
 
     // Función para abrir el modal de imagen
 function openModal(image) {
@@ -17,17 +17,17 @@ function closeModal() {
 
 // Lets image zoom (makes it bigger)
 export function initializeModal() {
-        // Añade evento de clic a todas las imágenes de productos
+        
     document.querySelectorAll('.product-image').forEach(image => {
         image.addEventListener('click', () => {
             openModal(image);
         });
     });
     
-        // Añade evento de clic al botón de cerrar el modal
+        
     document.getElementById('imageModalClose').addEventListener('click', closeModal);
     
-        // Cierra el modal al hacer clic fuera de la imagen
+        
     document.getElementById('imageModal').addEventListener('click', (event) => {
         if (event.target === document.getElementById('imageModal')) {
             closeModal();
@@ -39,9 +39,9 @@ export function initializeModal() {
 export function handleColorsToggle(){
 document.querySelectorAll('.color-circle').forEach(circle => {
     circle.addEventListener('click', (e) => {
-        const color = e.target.getAttribute('data-color').toLowerCase(); // Get the selected color
-        const product = e.target.closest('.product'); // Get the closest product element
-        const productImage = product.querySelector('.product-image'); // Get the product image element
+        const color = e.target.getAttribute('data-color').toLowerCase().replace(/\s+/g, '_');
+        const product = e.target.closest('.product');
+        const productImage = product.querySelector('.product-image'); 
 
         // Extract and format the product name
         let productName = product.getAttribute('data-product-name').trim();
@@ -56,5 +56,14 @@ document.querySelectorAll('.color-circle').forEach(circle => {
         e.target.classList.add('selected');
     });
 });
-
 }
+
+
+export function handdleErrorImage() {
+    document.querySelectorAll('.product-image').forEach(img => {
+        img.addEventListener('error', function() {
+            this.src = '/images/error.JPG'; // Fallback image
+        });
+    });
+}
+

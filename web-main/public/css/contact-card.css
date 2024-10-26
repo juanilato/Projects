@@ -1,3 +1,5 @@
+
+/*Contact card styles*/
 #contactCard {
     position: fixed;
     top: 50%;
@@ -21,14 +23,14 @@
     visibility: visible;
     transform: translate(-50%, -50%) scale(1);
 }
-
+/*Hidden state for the contact card*/
 #contactCard.hidden {
     opacity: 0;
     visibility: hidden;
     transform: translate(-50%, -50%) scale(0.9);
 }
 
-/* Estilo para el botón de cerrar */
+/* Close button contact card */
 #closeContactCard {
     position: absolute;
     top: 12px;
@@ -40,12 +42,13 @@
     cursor: pointer;
     transition: color 0.3s ease; 
 }
-
+/*hover over close button contact card*/
 #closeContactCard:hover {
     color: #eb4a9a; 
 }
 
-/* Estilos para la lista dentro del contacto */
+/* styles for the contact list */
+
 #contactCard ul {
     list-style-type: none;
     padding: 0;
@@ -67,7 +70,7 @@
     color: #eb4a9a; 
 }
 
-/* Ajustes específicos para dispositivos móviles */
+/* mobile adaptated */
 @media (max-width: 768px) {
     #contactCard {
         width: 85%; 

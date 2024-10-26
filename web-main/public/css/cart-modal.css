@@ -1,91 +1,74 @@
-/* cart-modal.css */
-
-/* Modal del carrito de compras */
+/* Modal styling for the shopping cart */
 .cart-modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    padding: 20px;
+    padding: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     z-index: 1000;
     max-width: 400px;
     max-height: 500px;
-    overflow-y: auto;
-    width: 90%; 
-    height: auto; 
-    opacity: 0; 
-    transition: opacity 0.3s ease, transform 0.3s ease; 
-    
+    overflow: hidden; /* Prevent the modal itself from being scrollable */
+    width: 90%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 /* Class to show the modal */
 .cart-modal.show {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1); /* Fully visible and scaled normally */
+    
 }
 
 /* Class to hide the modal */
 .cart-modal.hide {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95); /* Slightly scale down before hiding */
 }
 
-/* Asegurarse de que el contenido del modal no se salga de los límites */
+/* Scrollable content within the cart */
 .cart-content {
     max-width: 100%;
-    max-height: 100%;
+    max-height: calc(100% - 120px); /* Deduct space for the footer */
+    padding: 20px;
+    overflow-y: auto; /* Only the content should scroll */
+    padding-bottom: 80px;
 }
 
+/* Styling for individual cart items */
 .cart-item {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin-bottom: 15px;
-    border-bottom: 1px solid #ddd; 
-    padding-bottom: 15px; 
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding: 15px;
+    overflow-y: auto;
 }
 
+/* Flex layout for product information within the cart */
 .cart-item .product-info {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: flex-start;
 }
 
+/* Styling for the product name in the cart */
 .cart-item .product-name {
     font-size: 1.2em;
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
-.cart-item .color-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; 
-    margin-top: 10px;
+.cart-item:last-child {
+    margin-bottom: 140px; /* Adjust this if the footer height changes */
 }
 
-.cart-item .color-circle {
-    width: 24px; /* Un poco más grande para un aspecto moderno */
-    height: 24px;
-    border-radius: 50%;
-    margin-right: 5px; /* Espacio entre los círculos de color */
-    cursor: pointer;
-    border: 2px solid hsl(0, 0%, 75%); /* Borde más suave */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para un efecto sutil */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Transiciones suaves */
-}
-
-.cart-item .color-circle.selected {
-    position: relative;
-    border: 2px solid #f5b2ab; /* Borde claro para el estado seleccionado */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mejorada para un efecto elevado */
-    transform: scale(1.1); /* Escala ligeramente el círculo para énfasis */
-    transition: all 0.3s ease; /* Transición suave para todas las propiedades */
-}
-
+/* Remove item button styling */
 .cart-item .remove-from-cart {
-    align-self: flex-end; 
+    align-self: flex-end;
     margin-top: 10px;
     background-color: #eb4a9a;
     color: white;
@@ -96,16 +79,32 @@
     transition: background-color 0.3s ease;
 }
 
-/* Estilo para el total del carrito */
-.cart-total {
-    margin-top: 20px;
-    font-weight: bold;
-    color: #cc0a6b; 
+/* Cart footer with buttons, fixed at the bottom */
+.cart-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute; /* Positioned at the bottom of the modal */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 10px;
+    z-index: 1001;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para el botón de checkout y cerrar */
+/* Cart Total */
+.cart-total {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #cc0a6b;
+    text-align: center;
+}
+
+/* Styling for checkout and close buttons */
 #checkoutButton, #closeCartModal {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
     background-color: #d7649e;
     color: #fff;
@@ -115,31 +114,40 @@
     width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
+    margin-bottom: 0;
 }
 
-/* Efecto hover para los botones */
+/* Hover effect */
 #checkoutButton:hover, #closeCartModal:hover {
     background-color: #cc0a6b;
 }
 
-/* Ajustes específicos para dispositivos móviles en el carrito */
+/* Mobile-specific adjustments */
 @media (max-width: 768px) {
     .cart-modal {
-        width: 95%; 
-        padding: 15px; 
+        width: 95%;
     }
 
     .cart-content {
-        max-height: 80vh; 
+        max-height: calc(80vh - 120px); 
+        overflow-y: scroll;
+    }
+
+    .cart-footer {
+        position: fixed; 
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: #fff;
     }
 
     #checkoutButton, #closeCartModal {
-        padding: 8px; 
-        font-size: 14px; 
+        padding: 8px;
+        font-size: 14px;
     }
 
     .remove-from-cart {
-        padding: 4px 8px; 
-        font-size: 14px; 
+        padding: 4px 8px;
+        font-size: 14px;
     }
 }
