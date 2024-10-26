@@ -2,6 +2,7 @@
   "name": "my-hair-accessories-shop",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,3 +20,4 @@
     "mysql2": "^3.11.0"
   }
 }
+

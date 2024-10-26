@@ -1,7 +1,7 @@
 /* aboutus-card.css */
 
+/* Styling for the about us card element */
 #aboutusCard {
-    
     position: fixed;
     top: 50%;
     left: 50%;
@@ -19,18 +19,19 @@
     border: 1px solid #d7649e; 
 }
 
+/* Display the card when the show class is applied */
 #aboutusCard.show {
-   
     opacity: 1;
     visibility: visible;
 }
 
+/* Hide the card when the hidden class is applied */
 #aboutusCard.hidden {
-    
     opacity: 0;
     visibility: hidden;
 }
 
+/* Styling for the image inside the about us card */
 #aboutusCard img {
     width: 100px; 
     height: 100px; 
@@ -42,34 +43,38 @@
     margin-right: auto;
 }
 
+/* Styling for the paragraph text inside the card */
 #aboutusCard p {
     font-size: 16px; 
     color: #333; 
     text-align: center;
 }
 
+/* Responsive adjustments for smaller screen sizes */
 @media (max-width: 768px) {
     #aboutusCard {
-        width: 90%; /* Ajusta el ancho del modal en pantallas móviles */
-        height: 70%; /* Ajusta el alto del modal en pantallas móviles */
-        top: 10%; /* Ajusta la posición vertical para centrarlo mejor */
+        width: 90%; 
+        height: 70%; 
+        top: 10%; 
         left: 50%;
         transform: translateX(-50%);
-        border-radius: 10px; /* Mantén bordes redondeados */
-        padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+        border-radius: 10px; 
+        padding: 15px; 
     }
     
     #aboutusCard img {
-        width: 200px; /* Ajusta el tamaño de la imagen */
-        height: 200px; /* Ajusta el tamaño de la imagen */
+        width: 200px; 
+        height: 200px; 
     }
     
     #aboutusCard button {
-        font-size: 30px; /* Aumenta el tamaño del botón de cerrar */
-        top: 15px; /* Ajusta la posición del botón de cerrar */
+        font-size: 30px; 
+        top: 15px; 
         right: 15px;
     }
 }
+
+/* Styling for the close button inside the about us card */
 #aboutusCard button {
     position: absolute;
     top: 10px;

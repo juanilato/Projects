@@ -1,8 +1,10 @@
+
+/*Scroll to top button style*/
 #scrollToTopBtn {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    display: none; /* Initially hidden */
+    left: 20px;
+    display: none; 
     background-color: #d979a9;
     color: white;
     border: none;
@@ -17,8 +19,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1001;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0; /* Start as invisible */
-    visibility: hidden; /* Start as hidden */
+    opacity: 0; 
+    visibility: hidden; 
 }
 
 #scrollToTopBtn:hover {
@@ -26,13 +28,13 @@
 }
 
 #scrollToTopBtn.scrolling-up {
-    transform: translateY(-100px); /* Move up by 100px or however much you want */
-    opacity: 0; /* Fade out */
+    transform: translateY(-100px);
+    opacity: 0; 
     visibility: hidden;
 }
 
 #scrollToTopBtn.visible {
-    display: block; /* Ensure it's in the layout */
+    display: block; 
     opacity: 1;
     visibility: visible;
 }
@@ -41,7 +43,7 @@
 @media screen and (max-width: 600px) {
     #scrollToTopBtn {
         bottom: 15px;
-        right: 15px;
+        left: 15px;
         width: 50px;
         height: 50px;
         font-size: 15px;

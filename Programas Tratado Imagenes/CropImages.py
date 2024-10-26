@@ -38,7 +38,7 @@ def crop_image(input_path, output_path):
         cropped_img.save(output_path, format='PNG')
 
 # Directory containing the images
-input_directory = r'C:\Users\Juani\OneDrive\Documents\web-main\web-main\public\images'
+input_directory = r'C:\Users\Juani\Downloads\Fotos puro amor 2 - copia'
 output_directory = r'C:\Users\Juani\Downloads\fotos'
 
 # Ensure output directory exists

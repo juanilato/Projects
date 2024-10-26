@@ -1,17 +1,23 @@
 // cart.js
 import { notification as showNotification } from './accesibility.js';
-import { closeMenu } from './menu.js';
+export { cartModal };
+import {closeMenu} from './menu.js';
 
 // Update the cart count displayed
 function updateCartCount() {
     const cartCount = document.getElementById("cartCount");
-    const sideMenu = document.getElementById("sideMenu");
-    cartCount.textContent = cart.length; // Update cart count display
-    if (cart.length === 0) {
-        sideMenu.classList.add('shrink'); // Add 'shrink' class if cart is empty
-    } else {
-        sideMenu.classList.remove('shrink');
-    }
+    const cartHover = document.getElementById("cartButton");
+    cartCount.textContent = cart.length; 
+     
+    
+    cartHover.offsetHeight; 
+    cartHover.classList.add('hover-effect'); 
+
+    // Después de 2 segundos, elimina la clase para simular que el hover termina
+    setTimeout(function() {
+        cartHover.classList.remove('hover-effect'); 
+    }, 2000); 
+
 }
 
 // Inicializa el carrito desde localStorage o crea uno nuevo
@@ -35,38 +41,67 @@ export function addToCart() {
             const productPrice = parseFloat(button.closest('.product').querySelector('p').textContent.replace('Precio: $', ''));
             const colors = Array.from(button.closest('.product').querySelectorAll('.color-circle')).map(circle => circle.getAttribute('data-color'));
 
+            // Buscar el color seleccionado
+            const selectedColorCircle = button.closest('.product').querySelector('.color-circle.selected');
+            const selectedColor = selectedColorCircle ? selectedColorCircle.getAttribute('data-color') : null;
+
             // Agrega el producto al carrito
             cart.push({
                 id: productId,
                 name: productName,
                 price: productPrice,
                 colors: colors || [],
-                selectedColor: null
+                selectedColor: selectedColor
             });
 
             // Actualiza la cuenta del carrito
             saveCartToLocalStorage();
             updateCartCount();
             showNotification("Producto añadido al carrito");
+            
+
+            // Crear el ícono de corazón
+            let heartIcon = document.createElement('i');
+            heartIcon.classList.add('fas', 'fa-heart', 'heart-icon');
+
+            // Obtener la posición del botón
+            const buttonRect = button.getBoundingClientRect();
+            heartIcon.style.position = 'absolute';
+            heartIcon.style.left = `${buttonRect.right + window.scrollX}px`; // A la derecha del botón
+            heartIcon.style.top = `${buttonRect.top + window.scrollY}px`; // A la misma altura que el botón
+
+            document.body.appendChild(heartIcon);
+
+            // Animación y eliminación del ícono
+            setTimeout(() => {
+                heartIcon.remove();
+            }, 1000);
         });
     });
 }
 
-// Maneja el clic en el botón del carrito
+
+
+// Maneja el clic en el botón del carrito (let the event listeners to act over the different functions that can handle simultaneously)
 export function botonCarrito() {
     const cartButton = document.getElementById('cartButton');
     
-    cartButton.addEventListener("click", () => {
-        if (cart.length === 0) {
-            showNotification("Tu carrito está vacío");
-            return;
-        }
+    // Remover el listener si ya está agregado
+    cartButton.removeEventListener("click", handleCartButtonClick);
+    
+    // Añadir el listener
+    cartButton.addEventListener("click", handleCartButtonClick);
+}
 
+function handleCartButtonClick() {
+    if (cart.length === 0) {
+        showNotification("Tu carrito está vacío");
+    } else {
         closeMenu();
         createCartModal();
         showCartModal();
         addEventListenersToCart();
-    });
+    }
 }
 
 // Crea el modal del carrito
@@ -105,10 +140,13 @@ function createCartModal() {
         <div class="cart-content">
             <h2>Carrito de compras</h2>
             <div>${productList}</div>
+        </div>
+        <div class="cart-footer">
             <div class="cart-total">Total: $${total.toFixed(2)} + Envio</div>
             <button id="checkoutButton">Continuar a WhatsApp</button>
             <button id="closeCartModal">Cerrar</button>
         </div>
+        
     `;
 
     document.body.appendChild(cartModal);
@@ -119,7 +157,7 @@ function showCartModal() {
     setTimeout(() => {
         cartModal.classList.remove('hide');
         cartModal.classList.add('show');
-        document.body.style.overflow = 'hidden'; // Previene el scroll
+        document.body.style.overflow = 'hidden';
     }, 10);
 }
 
@@ -166,12 +204,22 @@ function eraseProduct(){
     document.querySelectorAll('.remove-from-cart').forEach(button => {
         button.addEventListener('click', (event) => {
             const index = event.target.getAttribute('data-index');
-            cart.splice(index, 1);
-            saveCartToLocalStorage();
-            updateCartCount();
+            const cartItem = document.querySelector(`.cart-item[data-index="${index}"]`);
 
-            // Actualiza el modal sin cerrarlo ni volver a abrirlo
-            updateCartModal();
+            cartItem.classList.add('drop-effect');
+
+            // Espera a que la animación termine antes de eliminar el producto del carrito
+            setTimeout(() => {
+                // Elimina el producto del carrito
+                cart.splice(index, 1);
+                saveCartToLocalStorage();
+                updateCartCount();
+                showNotification("Producto eliminado del carrito");
+
+                // Actualiza el modal sin cerrarlo ni volver a abrirlo
+                updateCartModal();
+            }, 500); // Debe coincidir con la duración de la animación (0.5s)
+        
         });
     });
 
@@ -185,17 +233,14 @@ export function closeCartModal() {
         if (cartModal) {
             document.body.removeChild(cartModal);
             cartModal = null;
-            document.body.style.overflow = ''; // Restaura el scroll
+            document.body.style.overflow = ''; 
         }
     }, 300);
 }
 
 // Procede a WhatsApp con los productos del carrito
 function proceedToWhatsApp() {
-    if (cart.length === 0) {
-        showNotification("Tu carrito está vacío");
-        return;
-    }
+
 
     let total = cart.reduce((sum, product) => sum + product.price, 0);
     let integerTotal = Math.floor(total);
@@ -211,6 +256,10 @@ function proceedToWhatsApp() {
 
 //actualiza el carrito cuando se elimina uno del mismo
 function updateCartModal() {
+    //fija si al actualizar queda vacío el carrito y lo cierra
+    if (cart.length == 0){
+        closeCartModal();
+    }
     // Recalcula el total
     let total = cart.reduce((sum, product) => sum + product.price, 0);
     
@@ -240,10 +289,13 @@ function updateCartModal() {
         <div class="cart-content">
             <h2>Carrito de compras</h2>
             <div>${productList}</div>
+        </div>
+        <div class="cart-footer">
             <div class="cart-total">Total: $${total.toFixed(2)} + Envio</div>
             <button id="checkoutButton">Continuar a WhatsApp</button>
             <button id="closeCartModal">Cerrar</button>
         </div>
+        
     `;
 
     // Añade los eventos actualizados

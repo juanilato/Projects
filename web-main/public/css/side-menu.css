@@ -5,6 +5,7 @@
 #menuToggle {
     position: absolute;
     left: 20px;
+    top: 35px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -22,7 +23,7 @@
 
 #menuToggle.active span:nth-child(1) {
     transform: rotate(45deg);
-    top: 8px; /* Adjust this value to position the line correctly */
+    top: 8px; 
 }
 
 #menuToggle.active span:nth-child(2) {
@@ -31,7 +32,7 @@
 
 #menuToggle.active span:nth-child(3) {
     transform: rotate(-45deg);
-    top: -8px; /* Adjust this value to position the line correctly */
+    top: -8px; 
 }
 
 /* side-menu.css */
@@ -39,7 +40,7 @@
 /* Side Menu Styles */
 #sideMenu {
     position: fixed; 
-    top: 100px; 
+    top: 130px; 
     left: 0; 
     width: 250px; 
     height: calc(100% - 100px); 
@@ -94,55 +95,25 @@
     text-align: left;
     width: 100%;
     display: block;
-    transition: color 0.3s ease, padding-left 0.3s ease; /* Smooth transition for hover effects */
+    transition: color 0.3s ease, padding-left 0.3s ease; 
 }
 
 .menuItem:hover {
-    color: hsl(0, 0%, 90%); /* Lighten color on hover */
-    padding-left: 10px; /* Add a slight indentation on hover */
+    color: hsl(0, 0%, 90%); 
+    padding-left: 10px; 
 }
 
 /* Mobile adjustments for the side menu */
 @media (max-width: 768px) {
     #sideMenu {
         width: 100%; 
-        height: calc(100vh - 100px); /* Adjust height for mobile */
+        height: calc(100vh - 100px); 
     }
-}
-/* Categories section */
-#categories {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    max-height: 0; /* Start with no visible height */
-    transition: opacity 0.5s ease, max-height 0.5s ease; /* Smooth transition */
-}
-
-/* Show categories */
-#categories.show {
-    opacity: 1;
-    max-height: 200vh; /* Ensure it can expand to fit content */
-}
-
-/* Hidden state */
-#categories.hidden {
-    opacity: 0;
-    max-height: 0; /* Ensure it collapses fully */
 }
 
 
 /* Mobile adjustments for categories */
 @media (max-width: 768px) {
-    #categories {
-        padding: 10px; 
-        padding-bottom: 60px; 
-    }
-
-    #categories a {
-        padding: 8px;
-        font-size: 14px; 
-    }
 
     #closeMenu {
         padding: 8px; 

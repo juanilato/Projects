@@ -9,7 +9,7 @@
     <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-
+    
 
     
     <!-- Fonts and Icons -->
@@ -30,19 +30,44 @@
     <link rel="stylesheet" href="css/scroll-to-top-btn.css">
     <link rel="stylesheet" href="css/aboutus-card.css">
     <link rel="stylesheet" href="css/contact-card.css">
+    <link rel="stylesheet" href="css/filter.css">
+    
 </head>
 <body>
     <!-- Header Section -->
     <header>
-    <!-- Menu Toggle Button -->
-    <div id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-        <!-- Logo -->
-        <img src="/images/logo2.PNG" id="logo2" alt="Logo">
+        <!-- Menu Toggle Button -->
+        <div id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <!-- Header Main (Logo and Cart Button) -->
+        <div class="header-main">
+            <!-- Logo -->
+            <img src="/images/logo2.PNG" id="logo2" alt="Logo">
+            
+            <!-- Cart Button -->
+            <button id="cartButton">
+                <i class="fa-solid fa-bag-shopping cart-icon"></i>
+                <span id="cartCount">0</span>
+            </button>
+        </div>
+    
+        <!-- Products Categories -->
+        <div class="categories-container">
+            <a href="#" data-filter="hebilla" class="menuItem">Hebilla</a>
+            <a href="#" data-filter="bebé" class="menuItem">Bebé</a>
+            <a href="#" data-filter="vincha" class="menuItem">Vincha</a>
+            <a href="#" data-filter="gomita" class="menuItem">Gomita</a>
+            <a href="#" data-filter="scrunchies" class="menuItem">Scrunchies</a>
+            <a href="#" data-filter="broche" class="menuItem">Broche</a>
+            <a href="#" data-filter="comunión" class="menuItem">Comunión</a>
+            <a href="#" data-filter="all" class="menuItem">Todos</a>
+        </div>
     </header>
+    
 
     <!-- Side Menu Navigation -->
     <nav id="sideMenu" class="hidden">
@@ -51,20 +76,7 @@
         <!-- Navigation Links -->
         <a href="#" id="contactButton" class="menuItem">Contacto</a>
         <a href="#" id="aboutUsButton" class="menuItem">Sobre Nosotros</a>
-        <button id="cartButton" class="menuItem">Carrito <span id="cartCount">0</span></button>
-
-        <!-- Products Dropdown -->
-        <button id="productsToggle" class="menuItem">Productos</button>
-        <div id="categories" class="hidden">
-            <!-- Product Categories -->
-            <a href="#" data-filter="hebilla" class="menuItem">Hebilla</a>
-            <a href="#" data-filter="bebé" class="menuItem">Bebé</a>
-            <a href="#" data-filter="vincha" class="menuItem">Vincha</a>
-            <a href="#" data-filter="gomita" class="menuItem">Gomita</a>
-            <a href="#" data-filter="scrunchies" class="menuItem">Scrunchies</a>
-            <a href="#" data-filter="broche" class="menuItem">Broche</a>
-            <a href="#" data-filter="all" class="menuItem">Todos</a>
-        </div>
+        
     </nav>
 
 <!-- Main Content -->
@@ -92,7 +104,7 @@
         
         <section class="product" data-product-name="<%= product.name.toLowerCase() %>">
             <!-- Product Image -->
-            <img src="/images/<%= formatImageUrl(product.name, product.colors) %>" alt="<%= product.name %>" class="product-image" loading="lazy">
+            <img src="/images/<%= formatImageUrl(product.name, product.colors) %>"  alt="<%= product.name %>" class="product-image" loading="lazy">
             
             <!-- Product Name and Price -->
             <h2><%= displayName %></h2>
@@ -107,8 +119,10 @@
 
             <!-- Add to Cart Button -->
             <button class="add-to-cart" data-product-id="<%= product.id %>">Añadir al carro</button>
+            
         </section>
     <% }); %>
+    <div id="heart-container"></div>
 </main>
 
 
@@ -119,7 +133,24 @@
     </div>
 
     <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" title="Volver al inicio">↑</button>
+    <button id="scrollToTopBtn" title="Volver al inicio"><i class="fa-solid fa-arrow-up"></i></button>
+    
+        
+    <!-- Main filter button (the circle that opens other filter options) -->
+    <button id="mainFilterButton" class="filter-circle">
+        <i class="fa-solid fa-filter"></i>
+    </button>
+
+    <!-- Hidden filter options (these buttons will appear when mainFilterButton is clicked) -->
+    <div id="filterOptions" class="filter-options">
+        <button id="priceAscButton"><i class="fa-solid fa-sort-amount-down-alt"></i></button>
+        <button id="priceDescButton"><i class="fa-solid fa-arrow-down-wide-short"></i></button>
+        <button id="nameAscButton"><i class="fa-solid fa-sort-alpha-down"></i></button>
+        <button id="nameDescButton"><i class="fa-solid fa-arrow-down-z-a"></i></button>
+    </div>
+
+
+
 
     <!-- Contact Card -->
     <div id="contactCard">
@@ -149,9 +180,10 @@
     <div id="notification-container"></div>
 
     <!-- Scripts JavaScript -->
-    <!--<script src="/js/script.js" type="module"></script> -->
+   
     
-    <script src="/js/main.js" type="module"></script>
+    <script type="module" src="/js/main.js"></script>
+  
     
 </body>
 </html>
